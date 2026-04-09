@@ -6,8 +6,373 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="السيرة الذاتية المهنية لرائف جودت - مبرمج ويب خبير و محاسب مالي">
     <title>رائف جودت | مبرمج ويب & محاسب مالي</title>
-    <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;700;900&family=Tajawal:wght@300;400;500;700&display=swap');
+
+        :root {
+            --bg-dark: #050810;
+            --card-bg: rgba(15, 23, 42, 0.7);
+            --primary: #38bdf8;
+            --secondary: #818cf8;
+            --accent: #c084fc;
+            --text-primary: #f8fafc;
+            --text-secondary: #94a3b8;
+            --glass-border: rgba(255, 255, 255, 0.1);
+            --glass-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+            --transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: var(--bg-dark);
+            color: var(--text-primary);
+            font-family: 'Tajawal', sans-serif;
+            line-height: 1.6;
+            overflow-x: hidden;
+            scroll-behavior: smooth;
+            direction: rtl;
+        }
+
+        h1, h2, h3, h4 {
+            font-family: 'Cairo', sans-serif;
+            font-weight: 700;
+        }
+
+        /* Background Animation */
+        .bg-mesh {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background: radial-gradient(circle at 50% 50%, #1e293b 0%, #050810 100%);
+        }
+
+        .bg-mesh::after {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at 80% 20%, rgba(56, 189, 248, 0.1) 0%, transparent 40%),
+                        radial-gradient(circle at 20% 80%, rgba(192, 132, 252, 0.1) 0%, transparent 40%);
+            filter: blur(80px);
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        /* Glassmorphism Classes */
+        .glass-panel {
+            background: var(--card-bg);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid var(--glass-border);
+            border-radius: 20px;
+            box-shadow: var(--glass-shadow);
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 90vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 2rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero h1 {
+            font-size: clamp(3rem, 8vw, 5rem);
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 1rem;
+            letter-spacing: -1px;
+        }
+
+        .hero p {
+            font-size: 1.5rem;
+            color: var(--text-secondary);
+            max-width: 700px;
+        }
+
+        .contact-pill-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        .contact-pill {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.8rem 1.5rem;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid var(--glass-border);
+            border-radius: 50px;
+            text-decoration: none;
+            color: var(--text-primary);
+            transition: var(--transition);
+            font-weight: 500;
+        }
+
+        .contact-pill:hover {
+            background: var(--primary);
+            color: var(--bg-dark);
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(56, 189, 248, 0.3);
+        }
+
+        /* Sections */
+        section {
+            padding: 6rem 0;
+        }
+
+        .section-header {
+            margin-bottom: 3rem;
+            position: relative;
+        }
+
+        .section-header h2 {
+            font-size: 2.5rem;
+            display: inline-block;
+            padding-bottom: 0.5rem;
+        }
+
+        .section-header::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            right: 0;
+            width: 60px;
+            height: 4px;
+            background: var(--primary);
+            border-radius: 2px;
+        }
+
+        /* Experience Timeline */
+        .timeline {
+            position: relative;
+            padding-right: 2rem;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            right: 0;
+            top: 0;
+            width: 2px;
+            height: 100%;
+            background: linear-gradient(to bottom, var(--primary), var(--accent));
+            opacity: 0.3;
+        }
+
+        .timeline-item {
+            position: relative;
+            margin-bottom: 4rem;
+        }
+
+        .timeline-item::after {
+            content: '';
+            position: absolute;
+            right: -2.35rem;
+            top: 0.5rem;
+            width: 12px;
+            height: 12px;
+            background: var(--primary);
+            border-radius: 50%;
+            border: 4px solid var(--bg-dark);
+            z-index: 10;
+        }
+
+        .timeline-content {
+            padding: 2rem;
+            transition: var(--transition);
+        }
+
+        .timeline-content:hover {
+            transform: translateX(-10px);
+            background: rgba(255, 255, 255, 0.03);
+        }
+
+        .timeline-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1rem;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .timeline-date {
+            color: var(--primary);
+            font-weight: 700;
+            font-size: 0.9rem;
+            background: rgba(56, 189, 248, 0.1);
+            padding: 0.3rem 0.8rem;
+            border-radius: 5px;
+        }
+
+        .company-info {
+            font-size: 1.1rem;
+            color: var(--text-secondary);
+            margin-bottom: 1rem;
+            display: block;
+        }
+
+        .experience-list {
+            list-style: none;
+        }
+
+        .experience-list li {
+            margin-bottom: 0.8rem;
+            position: relative;
+            padding-right: 1.5rem;
+            color: var(--text-secondary);
+        }
+
+        .experience-list li::before {
+            content: '←';
+            position: absolute;
+            right: 0;
+            color: var(--primary);
+        }
+
+        /* Skills Grid */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .skill-category {
+            padding: 2rem;
+        }
+
+        .skill-category h3 {
+            margin-bottom: 1.5rem;
+            color: var(--primary);
+            font-size: 1.4rem;
+        }
+
+        .skill-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.8rem;
+        }
+
+        .skill-tag {
+            padding: 0.5rem 1rem;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid var(--glass-border);
+            border-radius: 8px;
+            transition: var(--transition);
+            font-size: 0.95rem;
+            cursor: default;
+        }
+
+        .skill-tag:hover {
+            background: rgba(255, 255, 255, 0.1);
+            border-color: var(--primary);
+            color: var(--primary);
+        }
+
+        /* Document Preview Style */
+        .degree-container {
+            display: flex;
+            gap: 1.5rem;
+            align-items: flex-start;
+            flex-wrap: wrap;
+        }
+
+        .degree-text {
+            flex: 2;
+        }
+
+        .degree-preview {
+            flex: 1;
+            min-width: 150px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .doc-thumb {
+            width: 100%;
+            border-radius: 10px;
+            border: 1px solid var(--glass-border);
+            transition: var(--transition);
+            cursor: zoom-in;
+        }
+
+        .doc-thumb:hover {
+            transform: scale(1.05);
+            border-color: var(--primary);
+        }
+
+        .btn-download {
+            padding: 0.5rem 1rem;
+            background: rgba(56, 189, 248, 0.1);
+            border: 1px solid var(--primary);
+            color: var(--primary);
+            border-radius: 8px;
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: var(--transition);
+        }
+
+        .btn-download:hover {
+            background: var(--primary);
+            color: var(--bg-dark);
+        }
+
+        /* Animations */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease-out;
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Footer */
+        footer {
+            padding: 4rem 2rem;
+            text-align: center;
+            border-top: 1px solid var(--glass-border);
+            color: var(--text-secondary);
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 3rem; }
+            .hero p { font-size: 1.2rem; }
+            .timeline::before { right: -5px; }
+            .timeline-item::after { right: -2.85rem; }
+        }
+    </style>
 </head>
 
 <body>
@@ -244,7 +609,49 @@
 
     </footer>
 
-    <script src="script.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Intersection Observer for reveal animations
+            const revealCallback = (entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('active');
+                        // Once it's revealed, we don't need to observe it anymore
+                        observer.unobserve(entry.target);
+                    }
+                });
+            };
+
+            const revealObserver = new IntersectionObserver(revealCallback, {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            });
+
+            const revealElements = document.querySelectorAll('.reveal');
+            revealElements.forEach(el => revealObserver.observe(el));
+
+            // Subtle parallax effect for bg-mesh
+            window.addEventListener('scroll', () => {
+                const scrollPosition = window.pageYOffset;
+                const mesh = document.querySelector('.bg-mesh');
+                if (mesh) {
+                    mesh.style.transform = `translateY(${scrollPosition * 0.1}px)`;
+                }
+            });
+
+            // Hover effect for timeline items to add a subtle glow
+            const timelineItems = document.querySelectorAll('.timeline-content');
+            timelineItems.forEach(item => {
+                item.addEventListener('mousemove', (e) => {
+                    const rect = item.getBoundingClientRect();
+                    const x = e.clientX - rect.left;
+                    const y = e.clientY - rect.top;
+                    item.style.setProperty('--mouse-x', `${x}px`);
+                    item.style.setProperty('--mouse-y', `${y}px`);
+                });
+            });
+        });
+    </script>
 </body>
 
 </html>
